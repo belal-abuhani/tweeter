@@ -27,10 +27,6 @@ const tweet = mongoose.Schema({
         ref: 'User'
     }],
 
-    parent: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tweet'
-    },
 
     retweets: [{
         type: mongoose.Schema.Types.ObjectId,
