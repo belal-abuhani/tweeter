@@ -9,6 +9,8 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { Button } from '@material-ui/core';
+
 
 export default function Navbar() {
     return (
@@ -16,11 +18,13 @@ export default function Navbar() {
             <ul className="d-flex justify-content-around list-unstyled">
                 <li><MenuOptions text="Tweeter" Icon={TwitterIcon} /> </li>
                 <li><ul className="list-unstyled d-flex ">
-                    <li> <MenuOptions text="Home" Icon={HomeOutlinedIcon} /></li>
+                    <li> <MenuOptions active text="Home" Icon={HomeOutlinedIcon} /></li>
                     <li><MenuOptions text="explre" Icon={SearchIcon} /></li>
                     <li><MenuOptions text="Bookmarkes" Icon={BookmarkBorderIcon} /></li>
                 </ul></li>
                 <li className="dropMenu"><MenuOptions text="menu" Icon={ArrowDropDownIcon} /> <Menu /> </li>
+                {/* <Button variant="outlined" className="tweetBtn" fullWidth>tweet</Button> */}
+
             </ul>
         </div>
     )
