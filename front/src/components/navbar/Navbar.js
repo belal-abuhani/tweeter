@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink, Link } from "react-router-dom"
 import "./navbar.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from "./Menu"
@@ -16,11 +17,11 @@ export default function Navbar() {
     return (
         <div className="Navbar">
             <ul className="d-flex justify-content-around list-unstyled">
-                <li><MenuOptions text="Tweeter" Icon={TwitterIcon} /> </li>
+                <NavLink style={{ textDecoration: "none", color: "WindowText" }} to="/"><li><MenuOptions text="Tweeter" Icon={TwitterIcon} /> </li></NavLink>
                 <li><ul className="list-unstyled d-flex ">
-                    <li> <MenuOptions active text="Home" Icon={HomeOutlinedIcon} /></li>
-                    <li><MenuOptions text="explre" Icon={SearchIcon} /></li>
-                    <li><MenuOptions text="Bookmarkes" Icon={BookmarkBorderIcon} /></li>
+                    <NavLink style={{ textDecoration: "none", color: "WindowText" }} to="/"> <li> <MenuOptions active text="Home" Icon={HomeOutlinedIcon} /></li></NavLink>
+                    <NavLink style={{ textDecoration: "none", color: "WindowText" }} to="Explore"><li><MenuOptions text="Explore" Icon={SearchIcon} /></li></NavLink>
+                    <NavLink style={{ textDecoration: "none", color: "WindowText" }} to="Bookmarkes"><li><MenuOptions text="Bookmarkes" Icon={BookmarkBorderIcon} /></li></NavLink>
                 </ul></li>
                 <li className="dropMenu"><MenuOptions text="menu" Icon={ArrowDropDownIcon} /> <Menu /> </li>
                 {/* <Button variant="outlined" className="tweetBtn" fullWidth>tweet</Button> */}

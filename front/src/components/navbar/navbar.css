@@ -6,10 +6,10 @@
   }
   
   .menuOptions:hover {
-    background-color: #e8f5fe;
-    border-radius: 40px;
-    color: var(--twitter-color);
-    transition: color 100ms ease-out;
+    background-color: #e8f5fe !important;
+    border-radius: 40px !important;
+    color: var(--twitter-color) !important;
+    transition: color 100ms ease-out !important;
   }
   
   /* .menuOptions > .MuiSvgIcon-root {
