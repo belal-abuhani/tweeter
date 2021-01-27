@@ -15,7 +15,7 @@ import { Button } from '@material-ui/core';
 
 export default function Navbar() {
     return (
-        <div className="Navbar">
+        <div className="Navbar fixed-top " style={{ zIndex: "100" }}>
             <ul className="d-flex justify-content-around list-unstyled">
                 <NavLink style={{ textDecoration: "none", color: "WindowText" }} to="/"><li><MenuOptions text="Tweeter" Icon={TwitterIcon} /> </li></NavLink>
                 <li><ul className="list-unstyled d-flex ">

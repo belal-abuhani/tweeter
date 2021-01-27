@@ -13,7 +13,7 @@
 	height: 270px;
 	background-image: url(./cover.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size:auto;
     position: relative;
     background-position: center;
 	margin-top: 10px;
@@ -48,4 +48,25 @@
 .profile-name h2 {
 	text-align: center;
 	margin-bottom: 10px;
+}
+
+
+.profile{
+	top:-80px;
+	border-radius: 100px !important;
+}
+.profile-head {
+    transform: translateY(5rem)
+}
+.bg-light{
+	top:-50px
+}
+.cover {
+    background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+.img-thumbnail{
+	border-radius: 22px !important;
 }

@@ -12,10 +12,12 @@ function Home() {
     return (
         <div>
             <Header />
-            {/* <TweetBox />
-            <Sidebar />
-            <Feed />
-            <Post /> */}
+            <div className="row">
+                <Sidebar />
+                <Feed />
+            </div>
+
+            {/* <Post /> */}
 
         </div>
     )

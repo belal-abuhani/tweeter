@@ -1,9 +1,10 @@
 import React from 'react'
+import Post from "./Post"
 
 function Feed() {
     return (
-        <div>
-
+        <div className="col-md-8">
+            <Post />
         </div>
     )
 }
