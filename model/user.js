@@ -23,10 +23,6 @@ const user = mongoose.Schema({
         max: 255
     },
 
-    location: {
-        type: String
-    },
-
     bio: {
         type: String
     },

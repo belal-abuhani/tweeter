@@ -1,9 +1,11 @@
 import React from 'react'
+import SginUp from "../auth/SginUp"
 
 function Explore() {
     return (
-        <div>
-            explore
+        <div style={{ backgroundColor: "lightsteelblue" }}>
+            {/* <SginUp /> */}
+
         </div>
     )
 }

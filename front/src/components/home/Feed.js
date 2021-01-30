@@ -3,7 +3,7 @@ import Post from "./Post"
 
 function Feed() {
     return (
-        <div className="col-md-8">
+        <div className="col-md-7">
             <Post />
         </div>
     )

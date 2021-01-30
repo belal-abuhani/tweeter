@@ -6,12 +6,23 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 export default function Menu() {
+
+    const logout = () => {
+        localStorage.removeItem('login')
+        localStorage.removeItem('userId');
+        window.location.replace("/");
+
+    }
+
     return (
         <div className="Menu">
             <MenuOptions text="My Profile" Icon={AccountCircleIcon} />
             <MenuOptions text="Group Chat" Icon={GroupIcon} />
             <MenuOptions text="Settings" Icon={SettingsIcon} />
-            <MenuOptions text="Logout" Icon={ExitToAppIcon} />
+
+            <div onClick={logout}>
+                <MenuOptions text="Logout" Icon={ExitToAppIcon} />
+            </div>
         </div>
     )
 }

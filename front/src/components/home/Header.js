@@ -1,7 +1,7 @@
 import React from 'react'
 import "./header.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 
 function Header() {
     return (
@@ -14,7 +14,9 @@ function Header() {
                         </div>
                         <div className="bg-light col-md-8 m-auto p-4 d-flex justify-content-start text-center">
                             <div className="media align-items-center">
-                                <div className="profile mb-80 mr-3"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" className="mb-2 img-thumbnail rounded-250" /><a href="#" className="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>
+                                <div className="profile mb-80 mr-3"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" className="mb-2 img-thumbnail rounded-250" />
+                                    {/* <a href="#" className="btn btn-outline-dark btn-sm btn-block">Edit profile</a> */}
+                                </div>
 
                             </div>
                             <ul className="list-inline mb-0">
