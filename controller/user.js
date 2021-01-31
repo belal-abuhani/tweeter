@@ -25,8 +25,9 @@ const userValidat = joi.object({
 //this signup method for post requeset from client to save data in database 
 exports.signup = async (req, res) => {
     // this validate methode to check the requirement data
+    console.log(req.body)
     const { error } = await userValidat.validate(req.body)
-    if (error) return res.send(error.details[0].message)
+    if (error) return res.status(400).send(error.details[0].message)
 
     //findOne to check if email exit or not in database
     const isEmailExsist = await User.findOne({ email: req.body.email })

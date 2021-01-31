@@ -15,7 +15,8 @@ import MenuOptions from "../navbar/MenuOptions";
 
 // import CommentLike from "./commentLike"
 
-const TweetBody = ({ }) => {
+const TweetBody = ({ tweet }) => {
+    console.log(tweet)
     const isActive = useMediaQuery('(max-width:900px)')
     const [like, setLike] = useState("")
     const [retweet, setRetweet] = useState("")
@@ -37,20 +38,20 @@ const TweetBody = ({ }) => {
         <div className="tweet-body">
             <div className="tweet__top" >
                 <Link to="/profile" className="twet__top__image">
-                    <Avatar ><img className=" avatar__image" src={aaa} /></Avatar>
+                    <Avatar ><img className=" avatar__image" src={tweet.userId.profileImg} /></Avatar>
                 </Link>
 
                 <div className='top__date'>
-                    <h4 style={{ margin: "0px" }} >belal abuhain</h4>
-                    <h5 style={{ margin: "0px", color: "gray" }}>30/2021</h5>
+                    <h4 style={{ margin: "0px" }} >{tweet.userId.name}</h4>
+                    <h5 style={{ margin: "0px", color: "gray" }}>{`${tweet.createdAt.split('T')[0]} at ${tweet.createdAt.split('T')[1].split('.')[0]}`}</h5>
                 </div>
             </div>
             <h4 style={{ color: "gray" }}>
                 {/* {tweetResult.caption} */}
-                caption
+                {tweet.caption}
             </h4>
             {
-                <img className="tweet__image" src={aaa} />
+                tweet.image[0] && <img className="tweet__image" src={tweet.image[0]} />
             }
             <div className="comments-saves ">
                 <h5 style={{ marginRight: "10px" }}>10 comments</h5>
@@ -66,7 +67,7 @@ const TweetBody = ({ }) => {
             </div>
             <div className="profile-comment" >
                 <Link to="/profile" className="profile-link">
-                    <Avatar ><img className="avatar__image" src={aaa} /></Avatar>
+                    <Avatar ><img className="avatar__image" src={tweet.userId.profileImg} /></Avatar>
                 </Link>
                 {/* <SearchBar tweetid={tweetResult._id} /> */}
             </div>

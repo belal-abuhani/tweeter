@@ -1,22 +1,23 @@
 
+const Tweet = require('../model/tweet');
+const User = require('../model/user');
 
-//save  tweet 
 exports.tweet = async (req, res) => {
 
     const tweet = new Tweet({
-        userid: req.body.userid,
+        userId: req.body.userId,
         caption: req.body.caption,
-        img: req.body.img,
+        image: req.body.image,
         likes: 0,
         saved: 0,
         retweets: 0,
     })
     await tweet.save()
 
-    const user = await User.findOne({ _id: req.body.userid })
+    const user = await User.findOne({ _id: req.body.userId })
     console.log(user)
     user.tweets.push(tweet)
-    User.updateOne({ _id: req.body.userid }, { tweets: user.tweets }, (err, user) => {
+    User.updateOne({ _id: req.body.userId }, { tweets: user.tweets }, (err, user) => {
         if (err) return res.status(400).send(err);
 
         return res.status(200).json(user);
@@ -27,7 +28,7 @@ exports.tweet = async (req, res) => {
 
 //retrive tweets 
 exports.tweets = async (req, res) => {
-    const tweets = await Tweet.find().populate('userid').populate("comments")
+    const tweets = await Tweet.find().populate('userId').populate("comments")
     return res.status(200).json(tweets);
 }
 

@@ -26,7 +26,8 @@ router.post('/likeOnComment', comment.likeOnComment);
 router.post('/commentUnLike', comment.commentUnLike);
 
 
-
+router.post('/tweet', tweet.tweet);
+router.get('/tweets', tweet.tweets);
 
 
 

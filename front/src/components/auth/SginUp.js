@@ -49,7 +49,7 @@ function SginUp() {
                 console.log(response)
                 localStorage.setItem('login', response.data.token)
                 localStorage.setItem('userId', response.data.userId);
-                // window.location.replace("/");
+                window.location.replace("/");
 
             });
         }
@@ -125,8 +125,7 @@ function SginUp() {
                     <div className="content">
                         <h3>New here ?</h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-                            ex ratione. Aliquid!
+                            We Miss YOU
             </p>
                         <button onClick={() => setmode("sign-up-mode")} className="btn transparent" id="sign-up-btn">
                             Sign up
@@ -138,8 +137,7 @@ function SginUp() {
                     <div className="content">
                         <h3>One of us ?</h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                            laboriosam ad deleniti.
+                            Join US !, You Will Enjoy
             </p>
                         <button onClick={() => setmode("")} className="btn transparent" id="sign-in-btn">
                             Sign in

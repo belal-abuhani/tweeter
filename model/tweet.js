@@ -3,16 +3,16 @@ const mongoose = require("mongoose");
 
 const tweet = mongoose.Schema({
 
-    content: {
+    caption: {
         required: true,
         type: String
     },
 
-    images: {
+    image: {
         type: Array
     },
 
-    user: {
+    userId: {
         required: true,
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -22,27 +22,42 @@ const tweet = mongoose.Schema({
         type: Boolean
     },
 
-    likes: [{
+    // likes: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User'
+    // }],
+
+    comments: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Comment',
     }],
 
+    likes: {
+        type: Number
+    },
+    saved: {
+        type: Number
+    },
+    retweets: {
+        type: Number
+    },
 
-    retweets: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tweet'
-    }],
 
-    replies: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tweet'
-    }],
+    // retweets: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Tweet'
+    // }],
+
+    // replies: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Tweet'
+    // }],
 
 
-    retweet: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tweet'
-    }
+    // retweet: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Tweet'
+    // }
 }, { timestamps: true })
 
 const Tweet = mongoose.model('Tweet', tweet)

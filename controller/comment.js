@@ -8,7 +8,7 @@ const Comment = require('../model/Comment')
 exports.comment = async (req, res) => {
     console.log(req.body)
     const newComment = new Comment({
-        userid: req.body.userid,
+        userId: req.body.userId,
         tweet: req.body.tweetid,
         comment: req.body.comment,
         img: req.body.img,

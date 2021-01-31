@@ -1,21 +1,20 @@
 import React from 'react';
-import Sidebar from "./Sidebar";
 import TweetBox from "./TweetBox";
 import Feed from "./Feed";
-import Post from "./Post";
-import Header from "./Header";
+import CustomizedInputBase from "../explore/TweetSome"
 
 
 import "./home.css"
 
 function Home() {
     return (
-        <div>
-            <Header />
-            <div className="row">
-                <Sidebar />
+        <div className="mt-5 p-3 " style={{ backgroundColor: "lightsteelblue" }}>
+
+            <CustomizedInputBase />
+            <div className="mt-5 d-flex justify-content-center align-items-center">
                 <Feed />
             </div>
+
 
             {/* <Post /> */}
 

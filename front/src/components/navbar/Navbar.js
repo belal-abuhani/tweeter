@@ -15,7 +15,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 
 export default function Navbar() {
     return (
-        <div className="Navbar fixed-top " style={{ zIndex: "100" }}>
+        <div className="Navbar fixed-top bg-white m" style={{ zIndex: "100" }}>
             <ul className="d-flex justify-content-around list-unstyled">
                 <NavLink style={{ textDecoration: "none", color: "WindowText" }} to="/"><li><MenuOptions text="Tweeter" Icon={TwitterIcon} /> </li></NavLink>
                 <li><ul className="list-unstyled d-flex ">

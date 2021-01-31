@@ -1,8 +1,8 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+  } */
   
   body,
   input {
@@ -11,9 +11,12 @@
   
   .container {
     position: relative;
-    width: 100%;
+    /* width: 100%; */
     background-color: #fff;
     min-height: 100vh;
+    min-width: 100vh;
+    background-color: aqua;
+
     overflow: hidden;
   }
   
