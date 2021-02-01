@@ -33,4 +33,10 @@ exports.tweets = async (req, res) => {
 }
 
 
+exports.mytweets = async (req, res) => {
+    const user = await User.find({ _id: req.params.userId }).populate('tweets')
+    // var myTweets = user[0]
+    // console.log(user[0].tweets)
 
+    return res.status(200).json(user[0].tweets);
+}

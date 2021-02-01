@@ -13,11 +13,14 @@ router.post('/signup', user.signup);
 router.post('/signin', user.signin);
 router.post('/follow', user.signup);
 router.post('/unfollow', user.signup);
-router.post('/addBookmark', user.signup);
-router.post('/deleteBookmark', user.signup);
+router.post('/addBookmark', user.addBookmark);
+router.post('/deleteBookmark', user.deleteBookmark);
 router.post('/retweet', user.signup);
-router.post('/like', user.signup);
-router.post('/unlike', user.signup);
+router.post('/like', user.likes);
+router.post('/unlike', user.unlike);
+
+router.get('/user/:search', user.findUser);
+
 
 
 
@@ -28,6 +31,9 @@ router.post('/commentUnLike', comment.commentUnLike);
 
 router.post('/tweet', tweet.tweet);
 router.get('/tweets', tweet.tweets);
+router.get('/tweets/:userId', tweet.mytweets);
+
+
 
 
 

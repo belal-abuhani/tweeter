@@ -12,28 +12,80 @@ import aaa from "./aaa.png"
 import RepeatIcon from "@material-ui/icons/Repeat";
 import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import MenuOptions from "../navbar/MenuOptions";
+import axios from "axios"
 
 // import CommentLike from "./commentLike"
 
-const TweetBody = ({ tweet }) => {
-    console.log(tweet)
+const TweetBody = ({ tweet, userName }) => {
+    // console.log(tweet, "asdsads")
     const isActive = useMediaQuery('(max-width:900px)')
-    const [like, setLike] = useState("")
+    const [like, setLike] = useState({ islike: false, color: "" })
     const [retweet, setRetweet] = useState("")
-    const [save, setSave] = useState("")
+    const [save, setSave] = useState({ isSave: false, color: "" })
 
 
     const handleLike = async () => {
+        // console.log("response")
+
+        if (like.islike == false) {
+            axios.post(`/like`, { userId: localStorage.getItem("userId"), tweetId: tweet._id })
+                .then((response) => {
+                    console.log(response)
+
+                });
+            setLike({ islike: true, color: "red" })
+
+        } else {
+
+            console.log("un")
+            axios.post(`/unlike`, { userId: localStorage.getItem("userId"), tweetId: tweet._id })
+                .then((response) => {
+                    console.log(response)
+
+                });
+            setLike({ islike: false, color: "" })
+
+
+            console.log(like)
+
+        }
+
 
     }
+
     const handleRetweet = async () => {
 
     }
 
     const handleSave = async () => {
 
-    }
+        if (save.isSave == false) {
+            axios.post(`/addBookmark`, { userId: localStorage.getItem("userId"), tweetId: tweet._id })
+                .then((response) => {
+                    console.log(response)
 
+                });
+            setSave({ islike: true, color: "#27AE60" })
+
+
+        } else {
+
+            console.log("un")
+            axios.post(`/deleteBookmark`, { userId: localStorage.getItem("userId"), tweetId: tweet._id })
+                .then((response) => {
+                    console.log(response)
+
+                });
+            setSave({ isSave: false, color: "" })
+
+
+
+
+        }
+        console.log(save.isSave)
+
+    }
+    // console.log("tweet")
     return (
         <div className="tweet-body">
             <div className="tweet__top" >
@@ -42,7 +94,7 @@ const TweetBody = ({ tweet }) => {
                 </Link>
 
                 <div className='top__date'>
-                    <h4 style={{ margin: "0px" }} >{tweet.userId.name}</h4>
+                    <h4 style={{ margin: "0px" }} >{tweet.userId.name ? tweet.userId.name : userName}</h4>
                     <h5 style={{ margin: "0px", color: "gray" }}>{`${tweet.createdAt.split('T')[0]} at ${tweet.createdAt.split('T')[1].split('.')[0]}`}</h5>
                 </div>
             </div>
@@ -54,16 +106,33 @@ const TweetBody = ({ tweet }) => {
                 tweet.image[0] && <img className="tweet__image" src={tweet.image[0]} />
             }
             <div className="comments-saves ">
-                <h5 style={{ marginRight: "10px" }}>10 comments</h5>
-                <h5 style={{ marginRight: "10px" }}>10 likes</h5>
-                <h5 style={{ marginRight: "10px" }}>10 retweets</h5>
-                <h5> 10 saves</h5>
+                <h5 style={{ marginRight: "10px" }}>{tweet.comments.length} comments</h5>
+                <h5 style={{ marginRight: "10px" }}>{tweet.likes} likes</h5>
+                <h5 style={{ marginRight: "10px" }}>{tweet.retweets} retweets</h5>
+                <h5> {tweet.saved} saves</h5>
             </div>
             <div className='comments-sec'>
-                <MenuOptions text="Comment" Icon={ChatBubbleOutlineIcon} />
-                <MenuOptions text="Retweet" Icon={RepeatIcon} />
-                <MenuOptions text="Like" Icon={FavoriteBorderIcon} />
-                <MenuOptions text="Save" Icon={BookmarkBorderOutlinedIcon} />
+
+                <div>
+
+                    {/* <MenuOptions text="Comment" Icon={ChatBubbleOutlineIcon} /> */}
+                    <ChatBubbleOutlineIcon /> Comment
+                </div>
+                <div>
+                    {/* <MenuOptions text="Retweet" Icon={RepeatIcon} /> */}
+                    <RepeatIcon /> Retweet
+                </div>
+
+                <div onClick={handleLike} style={{ color: `${like.color}` }} >
+                    {/* <MenuOptions text="Like" Icon={FavoriteBorderIcon} /> */}
+                    <FavoriteBorderIcon />Like
+                </div>
+
+                <div onClick={handleSave} style={{ color: `${save.color}` }} >
+
+                    {/* <MenuOptions text="Save" Icon={BookmarkBorderOutlinedIcon} /> */}
+                    <BookmarkBorderOutlinedIcon />Save
+                </div>
             </div>
             <div className="profile-comment" >
                 <Link to="/profile" className="profile-link">

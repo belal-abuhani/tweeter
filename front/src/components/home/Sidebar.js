@@ -2,7 +2,7 @@ import React from 'react'
 
 function Sidebar() {
     return (
-        <div className="col-md-4 d-flex  justify-content-center" >
+        <div className="col-md-4   justify-content-center" >
             {/* <div className="px-4 py-3  "> */}
 
             <div className="p-4 rounded shadow-sm w-65 bg-light">

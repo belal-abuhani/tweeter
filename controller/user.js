@@ -166,21 +166,22 @@ exports.unfollow = async (req, res) => {
 
 exports.addBookmark = async (req, res) => {
 
-    await User.findOne({ _id: req.body.userid }, (err, user) => {
+    await User.findOne({ _id: req.body.userId }, (err, user) => {
 
         if (err) return res.status(400).send(err);
 
-        user.bookmarks.push(req.body.tweetId)
-        User.updateOne({ _id: req.body.userid }, { bookmarks: user.bookmarks }, (err, updated) => {
+        user.savedTeets.push(req.body.tweetId)
+        User.updateOne({ _id: req.body.userId }, { savedTeets: user.savedTeets }, (err) => {
             if (err) return res.status(400).send(err);
 
             Tweet.findOne({ _id: req.body.tweetId }, (err, tweet) => {
                 if (err) return res.status(400).send(err);
-                Tweet.updateOne({ _id: req.body.tweetId }, { saved: tweet.saved + 1 }, (err, data) => {
+                Tweet.updateOne({ _id: req.body.tweetId }, { saved: tweet.saved + 1 }, function (err) {
 
-                    if (err) return res.status(400).send(err);
+                    if (err)
+                        return res.status(400).send(err);
 
-                    return res.status(200).send('add tweet done')
+                    return res.status(200).send('add tweet done');
 
                 })
 
@@ -194,13 +195,13 @@ exports.addBookmark = async (req, res) => {
 
 //delete 
 exports.deleteBookmark = async (req, res) => {
-    await User.findOne({ _id: req.body.userid }, (err, user) => {
+    await User.findOne({ _id: req.body.userId }, (err, user) => {
         if (err) return res.status(400).send(err);
 
-        let bookmarks = user.bookmarks.filter((element) => {
+        let savedTeets = user.savedTeets.filter((element) => {
             return element.toString() !== req.body.tweetId
         })
-        User.updateOne({ _id: req.body.userid }, { bookmarks: bookmarks }, (err, updated) => {
+        User.updateOne({ _id: req.body.userId }, { savedTeets: savedTeets }, (err, updated) => {
             if (err)
                 return res.status(400).send(err);
             Tweet.findOne({ _id: req.body.tweetId }, (err, tweet) => {
@@ -224,12 +225,12 @@ exports.deleteBookmark = async (req, res) => {
 
 
 exports.retweet = async (req, res) => {
-    await User.findOne({ _id: req.body.userid }, (err, user) => {
+    await User.findOne({ _id: req.body.userId }, (err, user) => {
         if (err) return res.status(400).send(err);
 
         user.retweets.push(req.body.tweetId)
 
-        User.updateOne({ _id: req.body.userid }, { retweets: user.retweets }, (err) => {
+        User.updateOne({ _id: req.body.userId }, { retweets: user.retweets }, (err) => {
             if (err) return res.status(400).send(err);
 
             Tweet.findOne({ _id: req.body.tweetId }, (err, tweet) => {
@@ -250,13 +251,15 @@ exports.retweet = async (req, res) => {
 }
 
 exports.likes = async (req, res) => {
-    await User.findOne({ _id: req.body.userid }, (err, user) => {
-        if (err)
-            return res.status(400).send(err);
+
+    await User.findOne({ _id: req.body.userId }, (err, user) => {
+        if (err) return res.status(400).send(err);
 
         user.likes.push(req.body.tweetId)
+        console.log(user)
 
-        User.updateOne({ _id: req.body.userid }, { likes: user.likes }, (err, updated) => {
+        User.updateOne({ _id: req.body.userId }, { likes: user.likes }, (err, updated) => {
+
             if (err) return res.status(400).send(err);
 
             Tweet.findOne({ _id: req.body.tweetId }, (err, tweet) => {
@@ -282,7 +285,7 @@ exports.likes = async (req, res) => {
 
 exports.unlike = async (req, res) => {
     console.log(req.body)
-    await User.findOne({ _id: req.body.userid }, (err, user) => {
+    await User.findOne({ _id: req.body.userId }, (err, user) => {
         if (err)
             return res.status(400).send(err);
 
@@ -290,7 +293,7 @@ exports.unlike = async (req, res) => {
             return element.toString() !== req.body.tweetId
         })
 
-        User.updateOne({ _id: req.body.userid }, { likes: likes }, (err) => {
+        User.updateOne({ _id: req.body.userId }, { likes: likes }, (err) => {
             if (err)
                 return res.status(400).send(err);
 
@@ -309,4 +312,17 @@ exports.unlike = async (req, res) => {
         })
 
     })
+}
+
+
+exports.findUser = async (req, res) => {
+    let search = req.params.search
+    console.log(search)
+
+    const allUsers = await User.find().populate('tweets').populate('userId')
+    const users = allUsers.filter((user) => {
+        return user.name == search
+    })
+    // console.log(users[0].tweets, "asdafasfsa")
+    return res.status(200).json(users[0]);
 }

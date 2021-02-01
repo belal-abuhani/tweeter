@@ -125,7 +125,8 @@ function SginUp() {
                     <div className="content">
                         <h3>New here ?</h3>
                         <p>
-                            We Miss YOU
+                            Join US !, You Will Enjoy
+
             </p>
                         <button onClick={() => setmode("sign-up-mode")} className="btn transparent" id="sign-up-btn">
                             Sign up
@@ -137,7 +138,7 @@ function SginUp() {
                     <div className="content">
                         <h3>One of us ?</h3>
                         <p>
-                            Join US !, You Will Enjoy
+                            We Miss YOU
             </p>
                         <button onClick={() => setmode("")} className="btn transparent" id="sign-in-btn">
                             Sign in

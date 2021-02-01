@@ -14,10 +14,18 @@ export default function Menu() {
 
     }
 
+    const profile = () => {
+        window.location.replace("/profile");
+
+    }
     return (
-        <div className="Menu">
-            <MenuOptions text="My Profile" Icon={AccountCircleIcon} />
+        <div className="Menu" style={{ backgroundColor: "gray" }}>
+            <div onClick={profile}>
+                <MenuOptions text="My Profile" Icon={AccountCircleIcon} />
+
+            </div>
             <MenuOptions text="Group Chat" Icon={GroupIcon} />
+
             <MenuOptions text="Settings" Icon={SettingsIcon} />
 
             <div onClick={logout}>
